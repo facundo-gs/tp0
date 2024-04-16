@@ -35,12 +35,12 @@ int main(void)
 	//printf("%ld", strlen(valor));
 
 	// Loggeamos el valor de config
-	log_info(logger, valor);
+	log_info(logger, "Leimos el valor: %s, la IP: %s y el puerto: %s.", valor, ip, puerto);
 	
 
 	/* ---------------- LEER DE CONSOLA ---------------- */
 
-	leer_consola(logger);
+	//leer_consola(logger);
 
 	/*---------------------------------------------------PARTE 3-------------------------------------------------------------*/
 

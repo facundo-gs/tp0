@@ -21,8 +21,6 @@ int crear_conexion(char *ip, char* puerto)
 	struct addrinfo hints;
 	struct addrinfo *server_info;
 
-	int err;
-
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_INET;
 	hints.ai_socktype = SOCK_STREAM;
