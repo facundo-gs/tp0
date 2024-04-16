@@ -8,16 +8,15 @@ int iniciar_servidor(void)
 	// assert(!"no implementado!");
 
 	int socket_servidor;
-	int err;
 
 	struct addrinfo hints, *servinfo, *p;
 
 	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET;
+	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 	hints.ai_flags = AI_PASSIVE;
 
-	err = getaddrinfo(NULL, PUERTO, &hints, &servinfo);
+	getaddrinfo(NULL, PUERTO, &hints, &servinfo);
 
 	// Creamos el socket de escucha del servidor
 	socket_servidor = socket(servinfo->ai_family,
@@ -25,10 +24,10 @@ int iniciar_servidor(void)
 							 servinfo->ai_protocol);
 
 	// Asociamos el socket a un puerto
-	err = bind(socket_servidor, servinfo->ai_addr, servinfo->ai_addrlen);
+	bind(socket_servidor, servinfo->ai_addr, servinfo->ai_addrlen);
 
 	// Escuchamos las conexiones entrantes
-	err = listen(socket_servidor, SOMAXCONN);
+	listen(socket_servidor, SOMAXCONN);
 
 	freeaddrinfo(servinfo);
 	log_trace(logger, "Listo para escuchar a mi cliente");
